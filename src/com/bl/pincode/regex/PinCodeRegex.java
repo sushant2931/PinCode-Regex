@@ -5,23 +5,16 @@ import java.util.regex.Pattern;
 
 public class PinCodeRegex {
 
-	public static boolean checkValidPincode(String pinCode) {
+	public static void checkValidPincode(String pinCode) {
 
-		String pinCodeRegex = "[0-9]{6}$";
+		boolean isPinCode;
+		String pinCodeRegex = "^[0-9]{6}$";
 		Pattern patternObject = Pattern.compile(pinCodeRegex);
 		if (pinCode == null) {
-			return false;
+			isPinCode = false;
 		}
 		Matcher matcherObject = patternObject.matcher(pinCode);
-		return matcherObject.matches();
-	}
-
-	public static void main(String[] args) {
-
-		System.out.println("Welcome In PinCode regex Program");
-
-		String pinCode = "400088";
-		boolean isPinCode = checkValidPincode(pinCode);
+		isPinCode = matcherObject.matches();
 
 		if (isPinCode)
 			System.out.println(pinCode + " is an Valid PinCode");
@@ -29,4 +22,14 @@ public class PinCodeRegex {
 			System.out.println(pinCode + " is an Invalid PinCode");
 	}
 
+	public static void main(String[] args) {
+
+		System.out.println("Welcome In PinCode regex Program");
+
+		String pinCode = "400088";
+		checkValidPincode(pinCode);
+		pinCode = "A400088";
+		checkValidPincode(pinCode);
+
+	}
 }
